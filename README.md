@@ -45,12 +45,35 @@ Run script to do this stuff:
 Doing all with .services now
 just enable omxplayer0 it it starts on boot the other get manually startted and stopped
 
+### Core omxplayer bits:
 
 ```
-ln -s /home/pi/vplayer/vplayer.desktop  /etc/xdg/autostart/vplayer.desktop
+sudo -i
+
+ln -s /home/pi/vplayer/omxplayer0.service /lib/systemd/system/omxplayer0.service
 ln -s /home/pi/vplayer/omxplayer1.service /lib/systemd/system/omxplayer1.service
 ln -s /home/pi/vplayer/vplayer.conf /etc/vplayer.conf
 systemctl daemon-reload
+systemctl enable omxplayer0.service
+```
+
+### Remote support
+
+Does the echo work? Do an ssh turn@cloud.sneconsulting.co.uk and it should connect...
+
+```
+sudo -i
+
+mkdir -p /root/.ssh
+cp /home/pi/vplayer/keys/* /root/.ssh/
+ln -s /home/pi/vplayer/snesupport.service /lib/systemd/system/snesupport.service
+systemctl daemon-reload
+systemctl enable snesupport.service
+
+echo "|1|l4aXi6lWzC6vFJROA/8s6L7/qsY=|x5k4eY3Mx/fP35YRg9YMODW7tmM= ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNpncLgeqYqLULLeoej+uN/48upZW/WijUH3PjUDtyimBMNg5TvVcL7VMO/7JbL8KqhUFBx3cQcMfxJu3klAWyg=" >> /root/.ssh/known_hosts
 
 apt install ntp
 ```
+
+
+ln -s /home/pi/vplayer/vplayer.desktop  /etc/xdg/autostart/vplayer.desktop
