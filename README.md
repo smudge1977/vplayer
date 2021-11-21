@@ -1,4 +1,12 @@
 # VPLAYER
+
+Player | Location | Holding | Video1 | Video 2
+1 | Argos     | 
+2 | Laura lee |
+3 | Matalan   |
+
+
+
 test change
 ## TODO
 Auto start holding graphic
