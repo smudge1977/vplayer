@@ -7,6 +7,7 @@ fi
 
 if [ -z ${1+x} ]; then 
 	echo "Need to specify player number 1-3"
+	exit 127
 fi
 
 function whereami {
@@ -25,7 +26,10 @@ function whereami {
 whereami
 echo "This script is in: ${DIR}"
 echo "You specified player id ${1}"
-# exit 0
+
+# Setup wallpaper
+pcmanfm --set-wallpaper ${DIR}/wallpapper.png
+
 # Setup config file
 CONF=/etc/vplayer.conf
 CONTENT_SOURCE=vplayer@home.sneconsulting.co.uk:/var/shared/vplayer/contentJdog
@@ -37,10 +41,11 @@ echo VPLAYER_NUMBER=${1} >> ${CONF}
 # Setup service files
 # Ensure only 0 is enabled on boot
 cp ${DIR}/omxplayer*.service /lib/systemd/system
-systemctl disable 'omxplayer*.service'
-systemctl stop 'omxplayer*.service'
-systemctl enable 'omxplayer0.service'
-systemctl start 'omxplayer*.service'
+systemctl daemon-reload
+#systemctl disable omxplayer1.service
+systemctl stop omxplayer1.service
+systemctl enable omxplayer0.service
+systemctl start omxplayer0.service
 
 # TODO Service to get content
 mkdir -p ${VPLAYER_CONTENT}
