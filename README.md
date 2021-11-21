@@ -2,6 +2,11 @@
 
 ## User notes
 
+* Set the host name so we know which machine we are on
+```
+raspi-config
+```
+
 See the config files:
 ```
 cat /etc/vplayer.conf
@@ -36,15 +41,33 @@ It players content folder needs a video1.mp4 and a holding.mp4
 These are links to the files in vplayer/content
 
 
-Player | Location | Holding | Video1 | Video 2
-1 | Argos     | 
-2 | Laura lee |
-3 | Matalan   |
+Player | Location | ssh | vnc 
+-----------------------------
+1 | Argos     | 5922 | 5322
+2 | Laura lee | 5023 | 5123
+3 | Matalan   | 5024 | 5124
 
+```
+ssh turn@sneconsulting.co.uk -L port:localhost:port
+```
 
-
-test change
 ## TODO
+
+* Auto start vmxplayer0
+
+* install script to set wall papper
+```
+* pcmanfm --set-wallpaper yourfile.jpg
+```
+
+Power warning:
+```
+vi /boot/config.txt
+avoid_warnings=1
+```
+
+* 
+
 Auto start holding graphic
 Why does it not work with layer?
 
