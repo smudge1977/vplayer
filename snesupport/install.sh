@@ -24,9 +24,9 @@ echo "This script is in: ${DIR}"
 mkdir -p /root/.ssh
 cp ${DIR}/keys/* /root/.ssh/
 # TODO - Make a loop maybe!
-rm ${DIR}/systemd/snesupportssh.service
+rm /lib/systemd/system/snesupportssh.service
 ln -s ${DIR}/systemd/snesupportssh.service /lib/systemd/system/snesupportssh.service
-rm ${DIR}/systemd/snesupportvnc.service
+rm /lib/systemd/system/snesupportvnc.service
 ln -s ${DIR}/systemd/snesupportvnc.service /lib/systemd/system/snesupportvnc.service
 echo "|1|l4aXi6lWzC6vFJROA/8s6L7/qsY=|x5k4eY3Mx/fP35YRg9YMODW7tmM= ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNpncLgeqYqLULLeoej+uN/48upZW/WijUH3PjUDtyimBMNg5TvVcL7VMO/7JbL8KqhUFBx3cQcMfxJu3klAWyg=" >> /root/.ssh/known_hosts
 systemctl daemon-reload
