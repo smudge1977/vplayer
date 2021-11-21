@@ -1,0 +1,11 @@
+[Desktop Entry]
+Type=Application
+Name=VLC Player
+Comment=Launch VLC for signer
+NoDisplay=false
+Exec=/usr/bin/omxplayer --no-keys --no-osd --loop --display 5 --layer 0 /home/pi/vplayer/holding.mp4
+#/usr/bin/vlcsigner --run
+NotShowIn=GNOME;KDE;XFCE;
+
+# link to /etc/xdg/autostart
+# ln -s /etc/xdg/autostart/vplayer.desktop /home/pi/vplayer/vplayer.desktop
