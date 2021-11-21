@@ -21,10 +21,10 @@ function whereami {
 whereami
 echo "This script is in: ${DIR}"
 echo "You specified player id ${1}"
-exit 0
+# exit 0
 # Setup config file
 CONF=/etc/vplayer.conf
-CONTENT_SOURCE=vplayer@home.sneconsulting.co.uk:/shared/vplayer/contentJdog 
+CONTENT_SOURCE=vplayer@home.sneconsulting.co.uk:/var/shared/vplayer/contentJdog 
 VPLAYER_CONTENT=/home/pi/vplayer/content
 echo ${CONTENT_SOURCE} > ${CONF}
 echo ${VPLAYER_CONTENT} > ${CONF}
@@ -40,3 +40,7 @@ systemctl start 'omxplayer*.service'
 
 # TODO Service to get content
 rsync $CONTENT_SOURCE $VPLAYER_CONTENT
+
+# crontab initial setup
+echo "Current cron:"
+# crontab -l
