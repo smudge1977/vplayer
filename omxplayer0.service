@@ -1,15 +1,16 @@
 [Unit]
-Description=omxplayer scene 1
+Description=omxplayer scene 0 - Holding logo 
 After=syslog.target network.target multi-user.target 
 # nodm.service
 # Requires=nodm.service
 
 [Service]
 Type=simple
-# ExecStart=/usr/bin/x0vncserver -display %i -rfbport 5900 -securitytypes none
-# --no-keys
-ExecStartPre=killall omxplayer
-ExecStart=/usr/bin/omxplayer --no-osd --loop --display 5 --layer 0 /home/pi/vplayer/holding.mp4
+#ExecStartPre=killall omxplayer
+EnvironmentFile=/etc/vplayer.conf
+Environment="VPLAYER_SCENE=0"
+ExecStart=/usr/bin/omxplayer --no-osd --loop --display 5 --layer 0 ${VPLAYER_CONTENT}/holding.mp4
+#ExecStart=/usr/bin/omxplayer --no-osd --loop --display 5 --layer 0 /home/pi/vplayer/holding.mp4
 Restart=always
 RestartSec=3
 

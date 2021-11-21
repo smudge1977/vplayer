@@ -6,10 +6,10 @@ After=syslog.target network.target multi-user.target
 
 [Service]
 Type=simple
-# ExecStart=/usr/bin/x0vncserver -display %i -rfbport 5900 -securitytypes none
-# --no-keys
-ExecStartPre=killall omxplayer
-ExecStart=/usr/bin/omxplayer --no-osd --loop --display 5 --layer 1 /home/pi/vplayer/video1.mp4
+EnvironmentFile=/etc/vplayer.conf
+Environment="VPLAYER_SCENE=0"
+ExecStart=/usr/bin/omxplayer --no-osd --loop --display 5 --layer 1 ${VPLAYER_CONTENT}/video1.mp4
+#ExecStart=/usr/bin/omxplayer --no-osd --loop --display 5 --layer 0 /home/pi/vplayer/holding.mp4
 Restart=always
 RestartSec=3
 
