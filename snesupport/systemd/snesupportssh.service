@@ -6,7 +6,7 @@ After=syslog.target network.target multi-user.target
 
 [Service]
 Type=simple
-Environment="SSH_REMOTE=1922"
+EnvironmentFile=/etc/snesupport.conf
 ExecStart=/usr/bin/ssh turn@cloud.sneconsulting.co.uk -R ${SSH_REMOTE}:localhost:22 -N
 Restart=always
 RestartSec=3
