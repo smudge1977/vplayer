@@ -1,0 +1,3 @@
+CONTENT_SOURCE=vplayer@home.sneconsulting.co.uk:/var/shared/vplayer/contentJdog
+VPLAYER_CONTENT=/home/pi/vplayer/content
+VPLAYER_NUMBER=

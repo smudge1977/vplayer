@@ -26,8 +26,8 @@ echo "You specified player id ${1}"
 CONF=/etc/vplayer.conf
 CONTENT_SOURCE=vplayer@home.sneconsulting.co.uk:/var/shared/vplayer/contentJdog 
 VPLAYER_CONTENT=/home/pi/vplayer/content
-echo ${CONTENT_SOURCE} > ${CONF}
-echo ${VPLAYER_CONTENT} > ${CONF}
+echo CONTENT_SOURCE=${CONTENT_SOURCE} > ${CONF}
+echo VPLAYER_CONTENT=${VPLAYER_CONTENT} >> ${CONF}
 echo VPLAYER_NUMBER=${1} >> ${CONF}
 
 # Setup service files
@@ -39,7 +39,7 @@ systemctl enable 'omxplayer0.service'
 systemctl start 'omxplayer*.service'
 
 # TODO Service to get content
-rsync $CONTENT_SOURCE $VPLAYER_CONTENT
+rsync ${CONTENT_SOURCE} ${VPLAYER_CONTENT} -v
 
 # crontab initial setup
 echo "Current cron:"
