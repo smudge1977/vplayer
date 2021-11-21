@@ -5,7 +5,9 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
-if [ -z ${1+x} ]; then echo "Need to specify player number 1-3";
+if [ -z ${1+x} ]; then 
+	echo "Need to specify player number 1-3"
+fi
 
 function whereami {
     #https://stackoverflow.com/a/246128
