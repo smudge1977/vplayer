@@ -5,6 +5,8 @@ if [ "$EUID" -ne 0 ]
   exit
 fi
 
+if [ -z ${1+x} ]; then echo "Need to specify player number 1-3";
+
 function whereami {
     #https://stackoverflow.com/a/246128
     SOURCE="${BASH_SOURCE[0]}"
@@ -24,7 +26,7 @@ echo "You specified player id ${1}"
 # exit 0
 # Setup config file
 CONF=/etc/vplayer.conf
-CONTENT_SOURCE=vplayer@home.sneconsulting.co.uk:/var/shared/vplayer/contentJdog /
+CONTENT_SOURCE=vplayer@home.sneconsulting.co.uk:/var/shared/vplayer/contentJdog
 VPLAYER_CONTENT=/home/pi/vplayer/content
 echo CONTENT_SOURCE=${CONTENT_SOURCE} > ${CONF}
 echo VPLAYER_CONTENT=${VPLAYER_CONTENT} >> ${CONF}
@@ -40,7 +42,7 @@ systemctl start 'omxplayer*.service'
 
 # TODO Service to get content
 mkdir -p ${VPLAYER_CONTENT}
-rsync ${CONTENT_SOURCE} ${VPLAYER_CONTENT} -vr
+rsync ${CONTENT_SOURCE}/* ${VPLAYER_CONTENT} -avz
 chown pi:pi ${VPLAYER_CONTENT}
 
 # crontab initial setup
