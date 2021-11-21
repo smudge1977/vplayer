@@ -39,6 +39,7 @@ systemctl enable 'omxplayer0.service'
 systemctl start 'omxplayer*.service'
 
 # TODO Service to get content
+mkdir -p ${VPLAYER_CONTENT}
 rsync ${CONTENT_SOURCE} ${VPLAYER_CONTENT} -vr
 
 # crontab initial setup

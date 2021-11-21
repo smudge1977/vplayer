@@ -9,7 +9,7 @@ Type=simple
 #ExecStartPre=killall omxplayer
 EnvironmentFile=/etc/vplayer.conf
 Environment="VPLAYER_SCENE=0"
-ExecStart=/usr/bin/omxplayer --no-osd --loop --display 5 --layer 0 ${VPLAYER_CONTENT}/holding.mp4
+ExecStart=/usr/bin/omxplayer --no-osd --loop --display 5 --layer 0 ${VPLAYER_CONTENT}/${VPLAYER_NUMBER}/holding.mp4
 #ExecStart=/usr/bin/omxplayer --no-osd --loop --display 5 --layer 0 /home/pi/vplayer/holding.mp4
 Restart=always
 RestartSec=3
