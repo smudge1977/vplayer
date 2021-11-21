@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ "$EUID" -ne 0 ]
+  then echo "Please run as root"
+  exit
+fi
+
 function whereami {
     #https://stackoverflow.com/a/246128
     SOURCE="${BASH_SOURCE[0]}"
@@ -15,7 +20,7 @@ function whereami {
 
 whereami
 echo "This script is in: ${DIR}"
-exit 0
+
 mkdir -p /root/.ssh
 cp ${DIR}/keys/* /root/.ssh/
 # TODO - Make a loop maybe!
