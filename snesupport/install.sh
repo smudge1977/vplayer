@@ -23,13 +23,21 @@ echo "This script is in: ${DIR}"
 
 mkdir -p /root/.ssh
 cp ${DIR}/keys/* /root/.ssh/
+chown root:root /root/.ssh/id_rsa
+chmod 600 /root/.ssh/id_rsa
+
 # TODO - Make a loop maybe!
 rm /lib/systemd/system/snesupportssh.service
 ln -s ${DIR}/systemd/snesupportssh.service /lib/systemd/system/snesupportssh.service
 rm /lib/systemd/system/snesupportvnc.service
 ln -s ${DIR}/systemd/snesupportvnc.service /lib/systemd/system/snesupportvnc.service
-echo "|1|l4aXi6lWzC6vFJROA/8s6L7/qsY=|x5k4eY3Mx/fP35YRg9YMODW7tmM= ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNpncLgeqYqLULLeoej+uN/48upZW/WijUH3PjUDtyimBMNg5TvVcL7VMO/7JbL8KqhUFBx3cQcMfxJu3klAWyg=" >> /root/.ssh/known_hosts
+echo "|1|EB6uJf5WEQfdbfq0aP3DK0I9+WM=|WbkXGNygQVIiZxDI8v69GdPYYAY= ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNpncLgeqYqLULLeoej+uN/48upZW/WijUH3PjUDtyimBMNg5TvVcL7VMO/7JbL8KqhUFBx3cQcMfxJu3klAWyg=" >> /root/.ssh/known_hosts
+
+#echo "|1|l4aXi6lWzC6vFJROA/8s6L7/qsY=|x5k4eY3Mx/fP35YRg9YMODW7tmM= ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNpncLgeqYqLULLeoej+uN/48upZW/WijUH3PjUDtyimBMNg5TvVcL7VMO/7JbL8KqhUFBx3cQcMfxJu3klAWyg=" >> /root/.ssh/known_hosts
 systemctl daemon-reload
 systemctl enable snesupportssh.service
 systemctl enable snesupportvnc.service
+
+systemctl start snesupportssh.service
+systemctl start snesupportvnc.service
 
