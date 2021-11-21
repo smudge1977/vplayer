@@ -1,5 +1,41 @@
 # VPLAYER
 
+## User notes
+
+See the config files:
+```
+cat /etc/vplayer.conf
+cat /etc/snesupport.conf
+```
+
+Get latest version from git:
+The install also pulls latest content
+```
+cd ~/vplayer
+git pull --ff-only
+git status
+./install.sh <player number 1-3>
+```
+
+Get latest content:
+```
+cd ~/vplayer
+./content-pull.sh
+```
+
+See schedules:
+```
+sudo crontab -l
+```
+Edit Schedules:
+```
+sudo crontab -e
+```
+
+It players content folder needs a video1.mp4 and a holding.mp4
+These are links to the files in vplayer/content
+
+
 Player | Location | Holding | Video1 | Video 2
 1 | Argos     | 
 2 | Laura lee |
